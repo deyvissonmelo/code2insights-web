@@ -19,7 +19,7 @@ export const getPostsResumeByType = cache(
 
     if (!response) return [];
 
-    console.log(response);
+    console.log(response.results[0].data);
 
     return response.results.map<PostResume>((post) => {
       return {
@@ -29,6 +29,8 @@ export const getPostsResumeByType = cache(
           post.data.content.find(
             (content: { type: string }) => content.type === "paragraph",
           )?.text ?? "",
+        imageUrl: post.data.postimage.url,
+        imageAlt: post.data.postimage.alt,
         updateAt: new Date(post.last_publication_date).toLocaleDateString(
           "pt-BR",
           {
