@@ -1,19 +1,19 @@
-"use client";
+'use client'
 
-import Logo from "./logo";
-import * as Collapsible from "@radix-ui/react-collapsible";
-import Navbar from "./navbar";
-import { useAutoAnimate } from "@formkit/auto-animate/react";
-import Button from "../button";
-import { Menu } from "lucide-react";
-import { useState } from "react";
+import Logo from './logo'
+import * as Collapsible from '@radix-ui/react-collapsible'
+import Navbar from './navbar'
+import { useAutoAnimate } from '@formkit/auto-animate/react'
+import Button from '../button'
+import { Menu } from 'lucide-react'
+import { useState } from 'react'
 
 const Header = () => {
-  const [parent] = useAutoAnimate();
+  const [parent] = useAutoAnimate()
 
-  const [isOpen, setIsOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState(false)
 
-  const toogleOpen = () => setIsOpen(!isOpen);
+  const toogleOpen = () => setIsOpen(!isOpen)
 
   return (
     <Collapsible.Root
@@ -36,7 +36,7 @@ const Header = () => {
         <Navbar variant="collapsed" onItemSelect={toogleOpen} />
       </Collapsible.Content>
     </Collapsible.Root>
-  );
-};
+  )
+}
 
-export default Header;
+export default Header

@@ -1,25 +1,25 @@
-import { HTMLAttributes } from "react";
-import NavItem from "./nav-item";
-import { tv, VariantProps } from "tailwind-variants";
+import { HTMLAttributes } from 'react'
+import NavItem from './nav-item'
+import { tv, VariantProps } from 'tailwind-variants'
 
 const navbar = tv({
-  base: "flex items-center justify-center font-medium gap-3",
+  base: 'flex items-center justify-center font-medium gap-3',
   variants: {
     variant: {
-      default: "",
-      collapsed: "flex-col gap-0",
+      default: '',
+      collapsed: 'flex-col gap-0',
     },
   },
 
   defaultVariants: {
-    variant: "default",
+    variant: 'default',
   },
-});
+})
 
 interface NavbarProps
   extends HTMLAttributes<HTMLDivElement>,
     VariantProps<typeof navbar> {
-  onItemSelect?: () => void;
+  onItemSelect?: () => void
 }
 
 const Navbar = (props: NavbarProps) => {
@@ -32,7 +32,7 @@ const Navbar = (props: NavbarProps) => {
       <NavItem title="About" href="/about" variant={props.variant} />
       <NavItem title="Contact" href="/contact" variant={props.variant} />
     </nav>
-  );
-};
+  )
+}
 
-export default Navbar;
+export default Navbar

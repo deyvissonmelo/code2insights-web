@@ -1,2 +1,2 @@
 export const merge = (classNames: string[]) =>
-  classNames.filter(Boolean).join(" ")
+  classNames.filter(Boolean).join(' ')

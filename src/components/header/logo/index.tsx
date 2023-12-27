@@ -1,6 +1,6 @@
-import Image from "next/image";
-import Link from "next/link";
-import logoImg from "@/../public/images/lightbulb.svg";
+import Image from 'next/image'
+import Link from 'next/link'
+import logoImg from '@/../public/images/lightbulb.svg'
 
 const Logo = () => {
   return (
@@ -12,7 +12,7 @@ const Logo = () => {
         Code to Insights
       </span>
     </Link>
-  );
-};
+  )
+}
 
-export default Logo;
+export default Logo
