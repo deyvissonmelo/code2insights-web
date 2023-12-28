@@ -18,7 +18,7 @@ const Header = () => {
   return (
     <Collapsible.Root
       open={isOpen}
-      className="fixed left-0 right-0 z-20 border-b-[.5px] border-gray-300 bg-gray-50"
+      className="fixed h-app-nav-bar left-0 right-0 z-20 border-b-[.5px] border-gray-300 bg-gray-50"
     >
       <div className="flex w-full items-center justify-between px-5 py-4">
         <Logo />

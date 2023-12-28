@@ -9,9 +9,13 @@ const config: Config = {
   theme: {
     extend: {
       fontFamily: {
-        mr: ["var(--font-mr)"],
-        in: ["var(--font-in)"],
-      }
+        lato: ["var(--font-lt)"],
+        dm: ["var(--font-dm)"],
+        js: ["var(--font-js)"],
+      },
+      spacing: {
+        "app-nav-bar": "72px",
+      },
     },
   },
   plugins: [],

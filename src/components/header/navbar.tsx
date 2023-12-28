@@ -3,7 +3,7 @@ import NavItem from './nav-item'
 import { tv, VariantProps } from 'tailwind-variants'
 
 const navbar = tv({
-  base: 'flex items-center justify-center font-medium gap-3',
+  base: 'flex items-center justify-center font-medium gap-3 bg-gray-50',
   variants: {
     variant: {
       default: '',

@@ -5,12 +5,16 @@ import { cache } from "react";
 
 const repositoryName = "code2insights";
 
+export enum PostType {
+  STATISTICS = "statistics",
+}
+
 export const PrismicClient = Prismic.createClient(repositoryName, {
   accessToken: process.env.PRISMIC_ACCESS_TOKEN,
 });
 
 export const getPostsResumeByType = cache(
-  async (type: string, pageSize: number = 10) => {
+  async (type: PostType, pageSize: number = 10) => {
     const response = await PrismicClient.getByType(type, {
       fetch: ["publication.title", "publication.content"],
       page: 1,
@@ -19,11 +23,13 @@ export const getPostsResumeByType = cache(
 
     if (!response) return [];
 
+    console.log(response);
     console.log(response.results[0].data);
 
     return response.results.map<PostResume>((post) => {
       return {
         slug: post.uid ?? "",
+        type: type,
         title: RichText.asText(post.data.title),
         resume:
           post.data.content.find(

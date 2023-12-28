@@ -14,7 +14,7 @@ const PostImageCard = ({ post, ...props }: PostImageCardProps) => {
     >
       <div className="relative h-[90%] w-[100%] overflow-hidden">
         <div className="absolute left-2 top-2 z-10 text-gray-50">
-          <h3 className="mb-2 text-2xl font-bold">{post.title}</h3>
+          <h3 className="mb-2 text-2xl font-black font-lt">{post.title}</h3>
           <span className="rounded-xl border px-2">Statistics</span>
         </div>
         <NextImage
