@@ -3,6 +3,7 @@ import { PostResume } from "@/models/post-resume";
 import PostImageCard from "@/components/post-image-card";
 import PostList from "@/components/pages/home/post-list";
 import { PrismicPageResponse } from "@/services/prismic/prismic-page-response";
+import Bio from "@/components/bio";
 
 export const revalidate = 3600;
 
@@ -34,7 +35,10 @@ export default async function Home() {
           </div>
         </div>
 
-        <PostList />
+        <div className="flex w-full flex-col lg:flex-row lg:gap-4">
+          <PostList />
+          <Bio />
+        </div>
       </div>
     </main>
   );

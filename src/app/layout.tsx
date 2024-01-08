@@ -8,7 +8,7 @@ const lato = Lato({
   subsets: ["latin"],
   display: "swap",
   variable: "--font-lt",
-  weight: "100",
+  weight: "400",
 });
 
 const josefin = Josefin_Sans({
