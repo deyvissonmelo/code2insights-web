@@ -28,8 +28,11 @@ const PostCard = ({ post }: PostCardProps) => {
         </h2>
         <p className="text-base leading-7 text-gray-500">{post.resume}</p>
       </div>
-      <div id="post-footer">
-        <div id="post-footer-info" className="mb-6 flex gap-5 text-gray-400">
+      <div
+        id="post-footer"
+        className="flex flex-col items-start justify-between gap-5 w-full lg:flex-row lg:items-center"
+      >
+        <div id="post-footer-info" className="mb-3 flex gap-5 text-gray-400 lg:mb-0">
           <div className="flex justify-between gap-2">
             <MessageSquareMore />
             <span className="">10 responses</span>
@@ -41,7 +44,7 @@ const PostCard = ({ post }: PostCardProps) => {
           </div>
         </div>
 
-        <Button className="h-12 w-full">
+        <Button variant="outline" className="h-12 w-full lg:w-[30%]">
           <span>Read more</span>
         </Button>
       </div>

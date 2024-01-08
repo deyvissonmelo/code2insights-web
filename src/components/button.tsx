@@ -5,7 +5,7 @@ import { VariantProps, tv } from "tailwind-variants";
 const button = tv({
   base: [
     "rounded-lg px-4 py-2 text-sm font-semibold outline-none shadow-sm",
-    "focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-violet-500",
+    "focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-orange-500",
     "disabled:pointer-events-none",
     "active:opacity-80",
   ],

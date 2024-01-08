@@ -4,6 +4,8 @@ import PostImageCard from "@/components/post-image-card";
 import PostList from "@/components/pages/home/post-list";
 import { PrismicPageResponse } from "@/services/prismic/prismic-page-response";
 import Bio from "@/components/bio";
+import Newsletter from "@/components/newsletter";
+import Footer from "@/components/footer";
 
 export const revalidate = 3600;
 
@@ -15,12 +17,12 @@ export default async function Home() {
   );
 
   return (
-    <main className="flex h-svh flex-col justify-start overflow-y-auto py-app-nav-bar">
+    <main className="flex flex-col justify-start overflow-y-auto pt-app-nav-bar">
       <div
         id="content"
-        className="mx-auto w-full sm:max-w-[36rem] md:max-w-[56rem] lg:max-w-[72rem]"
+        className="mx-auto flex w-full flex-col gap-10 sm:max-w-[36rem] md:max-w-[56rem] md:px-4 lg:max-w-[72rem] mb-16"
       >
-        <div id="latestPosts" className="my-10 w-full">
+        <div id="latestPosts" className="mt-10 w-full">
           <div className="grid gap-x-0 gap-y-3 md:grid-cols-4 md:gap-x-6 lg:grid-cols-6">
             {posts.results?.map((post, index) => (
               <div
@@ -35,11 +37,15 @@ export default async function Home() {
           </div>
         </div>
 
-        <div className="flex w-full flex-col lg:flex-row lg:gap-4">
+        <div className="flex w-full flex-col gap-6 lg:flex-row lg:gap-4">
           <PostList />
-          <Bio />
+          <div className="flex flex-col gap-4">
+            <Bio className="lg:max-w-[50rem]" />
+            <Newsletter className="lg:max-w-[50rem]" />
+          </div>
         </div>
       </div>
+      <Footer />
     </main>
   );
 }

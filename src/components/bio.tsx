@@ -1,21 +1,17 @@
 "use client";
 
 import * as Avatar from "@radix-ui/react-avatar";
-import {
-  BookOpenText,
-  Github,
-  GithubIcon,
-  Linkedin,
-  LinkedinIcon,
-  LucideLinkedin,
-} from "lucide-react";
+import { BookOpenText, GithubIcon, LucideLinkedin } from "lucide-react";
 import Link from "next/link";
+import { HTMLAttributes } from "react";
 
-const Bio = () => {
+interface BioProps extends HTMLAttributes<HTMLDivElement> {}
+
+const Bio = (props: BioProps) => {
   return (
     <div
       id="bioContainer"
-      className="flex max-h-96 w-full flex-col items-center justify-center bg-white px-1 py-8 lg:max-w-80"
+      className={`flex max-h-96 w-full flex-col items-center justify-center bg-white px-1 py-8 ${props.className}`}
     >
       <Avatar.Root
         id="bioAvatar"
