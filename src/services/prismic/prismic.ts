@@ -1,8 +1,10 @@
+import { Categories } from "@/components/categories";
 import { PostResume } from "@/models/post-resume";
 import * as Prismic from "@prismicio/client";
 import { RichText } from "prismic-dom";
 import { cache } from "react";
 import { PrismicPageResponse } from "./prismic-page-response";
+import { PostCategory } from "@/models/post-category";
 
 const repositoryName = "code2insights";
 
@@ -12,6 +14,23 @@ export enum PostType {
 
 export const PrismicClient = Prismic.createClient(repositoryName, {
   accessToken: process.env.NEXT_PUBLIC_PRISMIC_ACCESS_TOKEN,
+});
+
+export const getPostTypes = cache(async (): Promise<PostCategory[]> => {
+  const response = (await PrismicClient.getRepository()).types;
+
+  if (!response) return [];
+
+  const categories: PostCategory[] = [];
+
+  Object.keys(response).forEach((key) =>
+    categories.push({
+      code: key,
+      name: response[key],
+    }),
+  );
+
+  return categories;
 });
 
 export const getPostsResumeByType = cache(

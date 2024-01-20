@@ -7,11 +7,14 @@ import Link from "next/link";
 const Footer = () => {
   return (
     <div className="w-full bg-slate-800 text-gray-200">
-      <div id="footerContent" className="px-4 py-8">
+      <div id="footerContent" className="px-4 pb-24 pt-10">
         <Logo />
-        <div className="flex flex-col lg:flex-row lg:justify-between">
-          <div id="footerNewsletter" className="my-10">
-            <form className="flex max-w-[24rem] flex-col gap-2">
+        <div className="flex w-full flex-col mt-10 gap-10 lg:flex-row lg:justify-between lg:gap-0">
+          <div
+            id="footerNewsletter"
+            className="flex w-full justify-center lg:flex-1 lg:justify-between"
+          >
+            <form className="flex w-full max-w-[32rem] flex-col gap-2">
               <p>Subscribe to our newsletter</p>
               <div className="flex gap-2">
                 <Input />

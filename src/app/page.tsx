@@ -1,4 +1,8 @@
-import { PostType, getPostsResumeByType } from "@/services/prismic/prismic";
+import {
+  PostType,
+  getPostTypes,
+  getPostsResumeByType,
+} from "@/services/prismic/prismic";
 import { PostResume } from "@/models/post-resume";
 import PostImageCard from "@/components/post-image-card";
 import PostList from "@/components/pages/home/post-list";
@@ -6,6 +10,7 @@ import { PrismicPageResponse } from "@/services/prismic/prismic-page-response";
 import Bio from "@/components/bio";
 import Newsletter from "@/components/newsletter";
 import Footer from "@/components/footer";
+import CategoryList from "@/components/categories";
 
 export const revalidate = 3600;
 
@@ -16,11 +21,13 @@ export default async function Home() {
     5,
   );
 
+  const categories = await getPostTypes();
+
   return (
     <main className="flex flex-col justify-start overflow-y-auto pt-app-nav-bar">
       <div
         id="content"
-        className="mx-auto flex w-full flex-col gap-10 sm:max-w-[36rem] md:max-w-[56rem] md:px-4 lg:max-w-[72rem] mb-16"
+        className="mx-auto mb-16 flex w-full flex-col gap-10 sm:max-w-[36rem] md:max-w-[56rem] md:px-4 lg:max-w-[72rem]"
       >
         <div id="latestPosts" className="mt-10 w-full">
           <div className="grid gap-x-0 gap-y-3 md:grid-cols-4 md:gap-x-6 lg:grid-cols-6">
@@ -42,6 +49,7 @@ export default async function Home() {
           <div className="flex flex-col gap-4">
             <Bio className="lg:max-w-[50rem]" />
             <Newsletter className="lg:max-w-[50rem]" />
+            <CategoryList categories={categories} />
           </div>
         </div>
       </div>
