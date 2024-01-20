@@ -10,7 +10,7 @@ import { PrismicPageResponse } from "@/services/prismic/prismic-page-response";
 import Bio from "@/components/bio";
 import Newsletter from "@/components/newsletter";
 import Footer from "@/components/footer";
-import CategoryList from "@/components/categories";
+import CategoryList from "@/components/category-list";
 
 export const revalidate = 3600;
 
@@ -53,7 +53,6 @@ export default async function Home() {
           </div>
         </div>
       </div>
-      <Footer />
     </main>
   );
 }
