@@ -16,7 +16,7 @@ export const PrismicClient = Prismic.createClient(repositoryName, {
 });
 
 export const getPostByUid = cache(
-  async (type: string, uid: string): Promise<Post | undefined> => {
+  async (type: PostType, uid: string): Promise<Post | undefined> => {
     const response = await PrismicClient.getByUID(type, uid);
 
     if (!response) return undefined;

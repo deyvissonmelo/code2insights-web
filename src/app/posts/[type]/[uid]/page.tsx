@@ -1,43 +1,77 @@
 import NextImage from "next/image";
-import { getPostByUid } from "@/services/prismic/prismic";
+import {
+  PostType,
+  getPostByUid,
+  getPostsResumeByType,
+} from "@/services/prismic/prismic";
+import { twMerge } from "tailwind-merge";
+import PostThumb from "@/components/post-thumb";
 
 export default async function Post({
   params,
 }: {
-  params: { type: string; uid: string };
+  params: { type: PostType; uid: string };
 }) {
   const post = await getPostByUid(params.type, params.uid);
 
+  const relatedPosts = await getPostsResumeByType(params.type, 1, 4);
+
   return (
     <>
-      <main className="px-4 py-app-nav-bar bg-white">
-        <article className="mt-8 max-w-[680px] mx-auto w-full bg-white px-4 md:px-8">
-          <div className="flex w-full flex-col pt-5 text-gray-500">
-            <div className="flex w-full flex-col sm:flex-row sm:justify-between">
-              <time>{post?.updatedAt}</time>
-              <span className="mb-4 capitalize">{post?.type}</span>
+      <main>
+        <div className="bg-white px-4 py-app-nav-bar">
+          <article className="mx-auto mt-8 w-full max-w-[680px] bg-white px-4 md:px-8">
+            <div className="flex w-full flex-col pt-5 text-gray-500">
+              <div className="flex w-full flex-col sm:flex-row sm:justify-between">
+                <time>{post?.updatedAt}</time>
+                <span className="mb-4 capitalize">{post?.type}</span>
+              </div>
+              <hr />
             </div>
-            <hr />
-          </div>
 
-          <div className="pt-8">
-            <h1 className="mb-4 font-lato text-3xl font-black leading-10 text-black">
-              {post?.title}
-            </h1>
-            <p className="text-base leading-7 text-gray-500">{post?.resume}</p>
-          </div>
+            <div className="pt-8">
+              <h1 className="mb-4 font-lato text-3xl font-black leading-10 text-black">
+                {post?.title}
+              </h1>
+              <p className="text-lg leading-7 text-gray-500">{post?.resume}</p>
+            </div>
 
-          <div className="relative my-8 h-52 w-full sm:h-96">
-            <NextImage
-              layout="fill"
-              objectFit="cover"
-              src={post?.imageUrl ?? ""}
-              alt={post?.imageAlt ?? ""}
+            <div className="relative my-8 h-48 w-full sm:h-96">
+              <NextImage
+                className="aspect-video"
+                layout="fill"
+                objectFit="cover"
+                src={post?.imageUrl ?? ""}
+                alt={post?.imageAlt ?? ""}
+              />
+            </div>
+
+            <div
+              className={twMerge(
+                "[&>h1]:mb-4 [&>h1]:text-2xl [&>h1]:font-extrabold",
+                "[&>p]:mb-8 [&>p]:text-xl [&>p]:leading-8 [&>p]:text-gray-600",
+                "[&>h2]:mb-4 [&>h2]:text-xl [&>h2]:font-bold",
+                "[&>h3]:mb-4 [&>h3]:text-lg [&>h3]:font-bold",
+                "[&>*>strong]:text-black",
+                "[&>ul]:mb-8 [&>ul]:flex [&>ul]:flex-col [&>ul]:gap-3",
+                "[&>ol]:mb-8 [&>ol]:flex [&>ol]:flex-col [&>ol]:gap-3",
+                "[&>ul>*]:text-lg",
+                "[&>*>iframe]:h-96 [&>*>iframe]:w-full [&>*>iframe]:aspect-video",
+              )}
+              dangerouslySetInnerHTML={{ __html: post?.content || "" }}
             />
-          </div>
+          </article>
+        </div>
 
-          <div dangerouslySetInnerHTML={{ __html: post?.content || "" }} />
-        </article>
+        <div className="mx-auto mt-8 w-full max-w-[680px] md:px-8">
+          <h2 className="mb-8 mx-4 text-lg">Related posts:</h2>
+
+          <div className="bg-white w-full grid gap-x-0 gap-y-3 md:grid-cols-2 md:gap-x-3 px-6">
+            {relatedPosts.results?.map((p) => (
+              <PostThumb key={p.slug} post={p} />
+            ))}
+          </div>
+        </div>
       </main>
     </>
   );
