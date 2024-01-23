@@ -41,7 +41,7 @@ const PostList = () => {
       className="flex w-full flex-col items-start justify-start gap-5"
     >
       {currentPostList.map((post) => (
-        <PostCard key={post.slug} post={post} />
+        <PostCard key={post.uid} post={post} />
       ))}
 
       <Pagination

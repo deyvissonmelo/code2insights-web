@@ -14,7 +14,7 @@ const PostImageCard = ({ post, ...props }: PostImageCardProps) => {
       {...props}
     >
       <div className="relative h-[90%] w-[100%] overflow-hidden">
-        <Link href={`/posts/${post.type}/${post.slug}`}>
+        <Link href={`/posts/${post.type}/${post.uid}`}>
           <div className="absolute left-2 top-2 z-10 text-gray-50">
             <h3 className="font-lt mb-2 text-2xl font-black">{post.title}</h3>
             <span className="rounded-xl border px-2 capitalize">

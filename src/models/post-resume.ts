@@ -1,5 +1,5 @@
 export interface PostResume {
-  slug?: string;
+  uid?: string;
   type?: string;
   title?: string;
   resume?: string;

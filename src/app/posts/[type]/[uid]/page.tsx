@@ -14,13 +14,13 @@ export default async function Post({
 }) {
   const post = await getPostByUid(params.type, params.uid);
 
-  const relatedPosts = await getPostsResumeByType(params.type, 1, 4);
+  const relatedPosts = await getPostsResumeByType(params.type, 1, 5);
 
   return (
     <>
       <main>
         <div className="bg-white px-4 py-app-nav-bar">
-          <article className="mx-auto mt-8 w-full max-w-[680px] bg-white px-4 md:px-8">
+          <article className="mx-auto mt-8 w-full max-w-[800px] bg-white px-4 md:px-8">
             <div className="flex w-full flex-col pt-5 text-gray-500">
               <div className="flex w-full flex-col sm:flex-row sm:justify-between">
                 <time>{post?.updatedAt}</time>
@@ -56,20 +56,21 @@ export default async function Post({
                 "[&>ul]:mb-8 [&>ul]:flex [&>ul]:flex-col [&>ul]:gap-3",
                 "[&>ol]:mb-8 [&>ol]:flex [&>ol]:flex-col [&>ol]:gap-3",
                 "[&>ul>*]:text-lg",
-                "[&>*>iframe]:h-96 [&>*>iframe]:w-full [&>*>iframe]:aspect-video",
+                "[&>*>iframe]:aspect-video [&>*>iframe]:h-96 [&>*>iframe]:w-full",
               )}
               dangerouslySetInnerHTML={{ __html: post?.content || "" }}
             />
           </article>
         </div>
 
-        <div className="mx-auto mt-8 w-full max-w-[680px] md:px-8">
-          <h2 className="mb-8 mx-4 text-lg">Related posts:</h2>
+        <div className="mx-auto mb-8 mt-12 w-full max-w-[800px] px-3 sm:px-6">
+          <h2 className="mb-4 text-lg font-bold">Related posts:</h2>
 
-          <div className="bg-white w-full grid gap-x-0 gap-y-3 md:grid-cols-2 md:gap-x-3 px-6">
-            {relatedPosts.results?.map((p) => (
-              <PostThumb key={p.slug} post={p} />
-            ))}
+          <div className="grid w-full gap-x-0 gap-y-3 sm:grid-cols-2 sm:gap-x-3 md:gap-x-6">
+            {relatedPosts.results
+              ?.filter((p) => p.uid !== post?.uid)
+              .slice(0, 4)
+              .map((p) => <PostThumb key={p.uid} post={p} />)}
           </div>
         </div>
       </main>

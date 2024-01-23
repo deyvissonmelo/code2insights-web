@@ -33,7 +33,7 @@ export default async function Home() {
           <div className="grid gap-x-0 gap-y-3 md:grid-cols-4 md:gap-x-6 lg:grid-cols-6">
             {posts.results?.map((post, index) => (
               <div
-                key={post.slug}
+                key={post.uid}
                 className={`md:col-span-2 md:px-0 ${
                   index <= 1 ? "lg:col-span-3" : "lg:col-span-2"
                 }`}

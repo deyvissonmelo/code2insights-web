@@ -14,7 +14,7 @@ const PostCard = ({ post }: PostCardProps) => {
   const router = useRouter();
 
   return (
-    <div key={post.slug} className="w-full bg-white px-8 py-8">
+    <div key={post.uid} className="w-full bg-white px-8 py-8">
       <div
         id="post-header"
         className="mb-7 flex justify-between border-b border-gray-300 pb-4 text-sm text-gray-500"
@@ -26,7 +26,7 @@ const PostCard = ({ post }: PostCardProps) => {
         <h2 className="font-lt mb-2 text-3xl leading-10">
           <Link
             className="font-bold hover:underline hover:decoration-4"
-            href={`/posts/${post.type}/${post.slug}`}
+            href={`/posts/${post.type}/${post.uid}`}
           >
             {post.title}
           </Link>
@@ -55,7 +55,7 @@ const PostCard = ({ post }: PostCardProps) => {
         <Button
           variant="outline"
           className="h-12 w-full lg:w-[30%]"
-          onClick={() => router.push(`/posts/${post.type}/${post.slug}`)}
+          onClick={() => router.push(`/posts/${post.type}/${post.uid}`)}
         >
           <span>Read more</span>
         </Button>

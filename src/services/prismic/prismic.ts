@@ -70,13 +70,10 @@ export const getPostsResumeByType = cache(
 
     const results = response.results.map<PostResume>((post) => {
       return {
-        slug: post.uid ?? "",
+        uid: post.uid ?? "",
         type: type,
         title: RichText.asText(post.data.title),
-        resume:
-          post.data.content.find(
-            (content: { type: string }) => content.type === "paragraph",
-          )?.text ?? "",
+        resume: RichText.asText(post.data.resume),
         imageUrl: post.data.postimage.url,
         imageAlt: post.data.postimage.alt,
         updateAt: new Date(post.last_publication_date).toLocaleDateString(
