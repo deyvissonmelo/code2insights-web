@@ -2,6 +2,7 @@ import NextImage from "next/image";
 import { PostResume } from "@/models/post-resume";
 import { MessageSquareMore, ThumbsUp } from "lucide-react";
 import Link from "next/link";
+import PostCounter from "./post-counter";
 
 interface PostThumbProps {
   post: PostResume;
@@ -30,21 +31,10 @@ const PostThumb = ({ post }: PostThumbProps) => {
           {post.title}
         </Link>
       </h2>
-      <p className="mb-4 text-gray-500 overflow-hidden text-ellipsis line-clamp-5">{post.resume}</p>
-      <div
-        id="post-footer-info"
-        className="mb-3 flex gap-5 text-gray-400 lg:mb-0"
-      >
-        <div className="flex justify-between gap-2">
-          <MessageSquareMore />
-          <span className="">10 responses</span>
-        </div>
-
-        <div className="flex justify-between gap-2">
-          <ThumbsUp />
-          <span className="">1024</span>
-        </div>
-      </div>
+      <p className="mb-4 line-clamp-5 overflow-hidden text-ellipsis text-gray-500">
+        {post.resume}
+      </p>
+      <PostCounter />
     </div>
   );
 };

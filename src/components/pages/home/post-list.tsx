@@ -1,7 +1,7 @@
 "use client";
 
 import Pagination from "@/components/pagination";
-import PostCard from "@/components/post-card";
+import PostCard from "@/components/post/post-card";
 import { PostResume } from "@/models/post-resume";
 import { getPostsResumeByType, PostType } from "@/services/prismic/prismic";
 import { useEffect, useState } from "react";

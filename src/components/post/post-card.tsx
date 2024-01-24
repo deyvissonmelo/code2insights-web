@@ -1,7 +1,7 @@
 "use client";
 
 import { MessageSquareMore, ThumbsUp } from "lucide-react";
-import Button from "./button";
+import Button from "../button";
 import { PostResume } from "@/models/post-resume";
 import Link from "next/link";
 import { useRouter } from "next/navigation";

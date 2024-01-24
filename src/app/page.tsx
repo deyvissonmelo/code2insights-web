@@ -4,12 +4,11 @@ import {
   getPostsResumeByType,
 } from "@/services/prismic/prismic";
 import { PostResume } from "@/models/post-resume";
-import PostImageCard from "@/components/post-image-card";
+import PostImageCard from "@/components/post/post-image-card";
 import PostList from "@/components/pages/home/post-list";
 import { PrismicPageResponse } from "@/services/prismic/prismic-page-response";
 import Bio from "@/components/bio";
 import Newsletter from "@/components/newsletter";
-import Footer from "@/components/footer";
 import CategoryList from "@/components/category-list";
 
 export const revalidate = 3600;

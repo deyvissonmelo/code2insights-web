@@ -1,7 +1,7 @@
 import { InputHTMLAttributes } from "react";
 import { VariantProps, tv } from "tailwind-variants";
 
-const input = tv({
+const textarea = tv({
   base: [
     "w-full px-2 border-0 p-0 text-zinc-900 placeholder-zinc-600 outline-none",
   ],
@@ -18,12 +18,12 @@ const input = tv({
   },
 });
 
-interface InputProps
-  extends InputHTMLAttributes<HTMLInputElement>,
-    VariantProps<typeof input> {}
+interface TextAreaProps
+  extends InputHTMLAttributes<HTMLTextAreaElement>,
+    VariantProps<typeof textarea> {}
 
-const Input = ({ variant, className, ...props }: InputProps) => {
-  return <input {...props} className={input({ variant, className })} />;
+const TextArea = ({ variant, className, ...props }: TextAreaProps) => {
+  return <textarea {...props} className={textarea({ variant, className })} />;
 };
 
-export default Input;
+export default TextArea;
