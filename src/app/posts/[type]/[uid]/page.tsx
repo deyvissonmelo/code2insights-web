@@ -6,6 +6,7 @@ import {
 } from "@/services/prismic/prismic";
 import { twMerge } from "tailwind-merge";
 import PostThumb from "@/components/post-thumb";
+import PostSignature from "@/components/post-signature";
 
 export default async function Post({
   params,
@@ -62,6 +63,8 @@ export default async function Post({
             />
           </article>
         </div>
+
+        <PostSignature />
 
         <div className="mx-auto mb-8 mt-12 w-full max-w-[800px] px-3 sm:px-6">
           <h2 className="mb-4 text-lg font-bold">Related posts:</h2>
