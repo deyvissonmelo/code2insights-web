@@ -4,14 +4,10 @@ import {
   getPostsResumeByType,
 } from "@/services/prismic/prismic";
 
-import Button from "@/components/button";
 import PostCounter from "@/components/post/post-counter";
 import PostSignature from "@/components/post/post-signature";
 import RelatedPosts from "./related-posts";
 import PostContent from "./post-content";
-import Input from "@/components/input";
-import { MessageSquareMore, Send, X } from "lucide-react";
-import TextArea from "@/components/textarea";
 import PostFormResponse from "./post-form-response";
 
 export default async function Post({
@@ -31,9 +27,7 @@ export default async function Post({
 
           <div className="mx-auto mt-8 w-full max-w-[800px] bg-white px-4 md:px-8">
             <hr className="my-8" />
-            <div>
-              <PostCounter />
-            </div>
+            <PostCounter />
           </div>
           <PostFormResponse />
         </div>
