@@ -11,7 +11,7 @@ interface PostThumbProps {
 const PostThumb = ({ post }: PostThumbProps) => {
   return (
     <div>
-      <div className="group relative my-8 h-48 w-full sm:h-48 md:h-48">
+      <div className="group relative my-4 h-48 w-full sm:h-48 md:h-48">
         <Link href={`/posts/${post.type}/${post.uid}`}>
           <NextImage
             layout="fill"
@@ -31,7 +31,7 @@ const PostThumb = ({ post }: PostThumbProps) => {
           {post.title}
         </Link>
       </h2>
-      <p className="mb-4 line-clamp-5 overflow-hidden text-ellipsis text-gray-500">
+      <p className="mb-4 line-clamp-4 overflow-hidden text-ellipsis text-gray-500">
         {post.resume}
       </p>
       <PostCounter />

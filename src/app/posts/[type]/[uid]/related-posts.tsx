@@ -8,13 +8,13 @@ interface RelatedPostsProps {
 
 const RelatedPosts = ({ postUid, relatedPosts }: RelatedPostsProps) => {
   return (
-    <div className="mx-auto mb-8 mt-12 w-full max-w-[800px] px-3 sm:px-6">
+    <div className="px-3 sm:px-6">
       <h2 className="mb-4 text-lg font-bold">Related posts:</h2>
 
-      <div className="grid w-full gap-x-0 gap-y-3 sm:grid-cols-2 sm:gap-x-3 md:gap-x-6">
+      <div className="grid w-full gap-x-0 gap-y-3 sm:grid-cols-2 sm:gap-x-3 md:grid-cols-3">
         {relatedPosts
           .filter((p) => p.uid !== postUid)
-          .slice(0, 4)
+          .slice(0, 3)
           .map((p) => (
             <PostThumb key={p.uid} post={p} />
           ))}
