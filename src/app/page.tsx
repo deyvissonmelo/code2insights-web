@@ -5,7 +5,7 @@ import {
 } from "@/services/prismic/prismic";
 import { PostResume } from "@/models/post-resume";
 import PostImageCard from "@/components/post/post-image-card";
-import PostList from "@/components/pages/home/post-list";
+import PostList from "@/components/post-list";
 import { PrismicPageResponse } from "@/services/prismic/prismic-page-response";
 import Bio from "@/components/bio";
 import Newsletter from "@/components/newsletter";

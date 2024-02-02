@@ -8,7 +8,15 @@ import { useEffect, useState } from "react";
 
 const PAGE_SIZE = 10;
 
-const PostList = () => {
+interface PostListProps {
+  postType?: PostType;
+  pageSize?: number;
+}
+
+const PostList = ({
+  postType = PostType.STATISTICS,
+  pageSize = PAGE_SIZE,
+}: PostListProps) => {
   const [currentPage, setCurrentPage] = useState(1);
   const [totalPosts, setTotalPosts] = useState(0);
   const [currentPostList, setCurrentPostList] = useState<PostResume[]>([]);
@@ -19,7 +27,7 @@ const PostList = () => {
 
   const loadPosts = async (pageNumber: number = 1) => {
     const response = await getPostsResumeByType(
-      PostType.STATISTICS,
+      postType,
       pageNumber,
       PAGE_SIZE,
     );
@@ -47,7 +55,7 @@ const PostList = () => {
       <Pagination
         totalItems={totalPosts}
         currentPage={currentPage}
-        pageSize={PAGE_SIZE}
+        pageSize={pageSize}
         onPageChange={onChangePage}
       />
     </div>

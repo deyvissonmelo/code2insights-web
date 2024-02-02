@@ -15,7 +15,7 @@ const CategoryList = ({ categories }: CategoryList) => {
           {categories.map((c) => (
             <li className="group inline-block py-3 pr-2">
               <Link
-                href={"/"}
+                href={`/categories/${c.code}`}
                 className="rounded-full border-2 border-gray-300 px-3 py-2 text-gray-500 group-hover:border-orange-300 group-hover:text-orange-500"
               >
                 {c.name}
